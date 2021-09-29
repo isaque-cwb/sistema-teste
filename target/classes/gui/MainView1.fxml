@@ -12,6 +12,7 @@
           <Menu mnemonicParsing="false" text="Cadastro">
             <items>
               <MenuItem fx:id="menuItemCadastro" mnemonicParsing="false" onAction="#onMenuItemCadastroAction" text="Básico" />
+                  <MenuItem fx:id="menuItemCadastrados" mnemonicParsing="false" onAction="#onMenuItemCadastradosAction" text="Cadastrados" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Fim">

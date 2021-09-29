@@ -9,26 +9,32 @@ import gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
 public class MainViewController implements Initializable {
 
 	@FXML
 	private MenuItem menuItemCadastro;
+
+	@FXML
+	private MenuItem menuItemCadastrados;
 	
 	@FXML
 	private MenuItem menuFim;
 	
 	
+	
 	@FXML
 	public void onMenuItemCadastroAction() {
-		//loadView("/gui/CadastroView.fxml");
-		System.out.println("onMenuFimAction");
+		loadViewCadastro("/gui/CadastroView.fxml");
+	}
+	
+	@FXML
+	public void onMenuItemCadastradosAction() {
+		loadViewCadastrados("/gui/CadastroListView.fxml");
 	}
 	
 	@FXML
@@ -41,18 +47,42 @@ public class MainViewController implements Initializable {
 				
 	}
 	
-	private void loadView(String absoluteName) {
+	private void loadViewCadastro(String absolutName) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-			VBox newVBox = loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
+			//ScrollPane newScrollPane = loader.load();
+			//VBox newVBox = loader.load();
+			//SplitPane newSplitPane = loader.load();
+			AnchorPane newAnchorPane =  loader.load();
 			
 			Scene mainScene = Main.getMainScene();
-			VBox mainVBox = (VBox)((ScrollPane)mainScene.getRoot()).getContent();
+			AnchorPane anchorPane = (AnchorPane)(mainScene.getRoot());
+						
+			anchorPane.getChildren().clear();
+			anchorPane.getChildren().addAll(newAnchorPane.getChildren());	
 			
-			Node mainMenu = mainVBox.getChildren().get(0);
-			mainVBox.getChildren().clear();
-			mainVBox.getChildren().add(mainMenu);
-			mainVBox.getChildren().addAll(newVBox.getChildren());
+		}
+		catch(IOException e){
+			Alerts.showAlert("IOException", "Erro loading View", e.getMessage(), AlertType.ERROR);
+			
+		}
+	}
+
+	
+	private void loadViewCadastrados(String absolutName) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
+			//ScrollPane newScrollPane = loader.load();
+			//VBox newVBox = loader.load();
+			//SplitPane newSplitPane = loader.load();
+			AnchorPane newAnchorPane =  loader.load();
+			
+			
+			Scene mainScene = Main.getMainScene();
+			AnchorPane anchorPane = (AnchorPane)(mainScene.getRoot());
+			
+			anchorPane.getChildren().clear();
+			anchorPane.getChildren().addAll(newAnchorPane.getChildren());	
 			
 		}
 		catch(IOException e){

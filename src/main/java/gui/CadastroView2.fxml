@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CadastroViewController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<GridPane alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="356.0" prefWidth="261.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0">
 			<columnConstraints>
@@ -86,8 +86,8 @@
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</GridPane.margin>
 				</Label>
-				<Button fx:id="buttonIncluir" mnemonicParsing="false" onAction="#onButtonIncluirAction" prefHeight="26.0" prefWidth="201.0" text="Incluir" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="buttonSair" mnemonicParsing="false" onAction="#onButtonSairAction" prefHeight="26.0" prefWidth="38.0" text="Sair" GridPane.rowIndex="5">
+				<Button mnemonicParsing="false" prefHeight="26.0" prefWidth="201.0" text="Incluir" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" prefHeight="81.0" prefWidth="46.0" text="Sair" textAlignment="CENTER" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>

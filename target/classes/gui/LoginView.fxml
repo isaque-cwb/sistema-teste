@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginViewController">
    <children>
-      <Pane layoutX="157.0" layoutY="129.0" prefHeight="174.0" prefWidth="273.0">
+      <Pane layoutX="226.0" layoutY="113.0" prefHeight="174.0" prefWidth="273.0">
          <children>
             <Label layoutX="29.0" layoutY="14.0" text="ACESSO AO SISTEMA">
                <font>
@@ -29,7 +28,7 @@
             </Label>
             <TextField layoutX="100.0" layoutY="82.0" prefHeight="27.0" prefWidth="149.0" />
             <TextField layoutX="100.0" layoutY="53.0" prefHeight="27.0" prefWidth="149.0" />
-            <Button layoutX="155.0" layoutY="123.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Validar">
+            <Button fx:id="buttonValidar" layoutX="155.0" layoutY="123.0" mnemonicParsing="false" onAction="#onButtonValidarAction" prefHeight="25.0" prefWidth="94.0" text="Validar">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
