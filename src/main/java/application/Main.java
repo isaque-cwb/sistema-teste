@@ -10,12 +10,14 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
+	
+	
 	private static Scene mainScene;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/LoginView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CadastroView.fxml"));
 			Parent parent = loader.load();
 			mainScene = new Scene(parent);
 			primaryStage.setScene(mainScene);
@@ -31,6 +33,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+		
 		launch(args);
 	}
 }

@@ -3,6 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import application.Main;
 import gui.util.Alerts;
@@ -29,7 +30,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemCadastroAction() {
-		loadViewCadastro("/gui/CadastroView.fxml");
+		loadViewCadastro("/gui/CadastroView.fxml", null);
 	}
 	
 	@FXML
@@ -47,7 +48,7 @@ public class MainViewController implements Initializable {
 				
 	}
 	
-	private void loadViewCadastro(String absolutName) {
+	private synchronized <T> void loadViewCadastro(String absolutName, Consumer<T> initializingAction) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
 			//ScrollPane newScrollPane = loader.load();
@@ -59,11 +60,14 @@ public class MainViewController implements Initializable {
 			AnchorPane anchorPane = (AnchorPane)(mainScene.getRoot());
 						
 			anchorPane.getChildren().clear();
-			anchorPane.getChildren().addAll(newAnchorPane.getChildren());	
+			anchorPane.getChildren().addAll(newAnchorPane.getChildren());
+			
+			T controller = loader.getController();
+			initializingAction.accept(controller);
 			
 		}
 		catch(IOException e){
-			Alerts.showAlert("IOException", "Erro loading View", e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("IO Exception", null, e.getMessage(), AlertType.ERROR);
 			
 		}
 	}

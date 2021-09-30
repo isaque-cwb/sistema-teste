@@ -24,7 +24,7 @@ public class LoginViewController implements Initializable {
 	
 	@FXML
 	public void onButtonValidarAction() {
-		loadView("/gui/MainView1.fxml");
+		loadView("/gui/MainView.fxml");
 	}
 	
 	private void loadView(String absolutName) {
