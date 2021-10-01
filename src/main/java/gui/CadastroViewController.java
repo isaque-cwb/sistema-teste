@@ -24,7 +24,6 @@ public class CadastroViewController implements Initializable {
 	
 	private User entity;
 	
-//	private UserService service;
 	
 	@FXML
 	private TextField txtId;
@@ -53,7 +52,6 @@ public class CadastroViewController implements Initializable {
 	@FXML
 	private Label labelErrorCelular;
 	
-//	private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 
 	
 	
@@ -68,14 +66,8 @@ public class CadastroViewController implements Initializable {
 		this.entity = entity;
 	}
 	
-//	public void setUser(UserService service) {
-//		this.service = service;
-//		
-//	}
+
 	
-//	public void subscribeDataChangeListener(DataChangeListener listener) {
-//		dataChangeListeners.add(listener);
-//	}
 	
 	private User getFormData() {
 		User obj = new User();

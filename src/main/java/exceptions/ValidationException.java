@@ -14,6 +14,7 @@ public class ValidationException extends RuntimeException {
 		super(msg);
 	}
 	
+	
 	public Map<String, String> getErrors(){
 		return errors;
 	}
