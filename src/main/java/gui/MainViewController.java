@@ -35,13 +35,15 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemCadastradosAction() {
-		loadViewCadastrados("/gui/CadastroListView.fxml");
+		loadViewCadastrados("/gui/CadastradosListView.fxml");
 	}
 	
 	@FXML
 	public void onMenuFimAction() {
 		System.out.println("onMenuFimAction");
 	}
+	
+	
 	
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {

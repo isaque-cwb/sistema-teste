@@ -79,10 +79,7 @@ public class LoginViewController implements Initializable {
 			loadView("/gui/MainView.fxml");
 		}else {
 			Alerts.showAlert("ERRO", null, "Usário ou senha inválida", AlertType.ERROR);
-		}
-		
-		
-		
+		}		
 	
 	}
 	

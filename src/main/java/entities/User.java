@@ -13,6 +13,7 @@ public class User implements Serializable{
 	private Double deposito;
 	private String celular;
 	
+	
 	public User() {}
 
 	public User(Integer id, String nome, Double valor, Double deposito, String celular) {
