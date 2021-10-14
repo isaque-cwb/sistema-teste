@@ -15,8 +15,6 @@ public class Main extends Application {
 	private static Scene loginScene;
 	private static Scene mainScene;
 	private static Scene cadastroScene;
-	private static Scene cadastradosListScene;
-
 	
 	
 	@Override
@@ -32,12 +30,7 @@ public class Main extends Application {
 			mainScene = new Scene(mainView, 700, 400);
 			
 			Parent cadastroView = FXMLLoader.load(getClass().getResource("/gui/CadastroView.fxml"));
-			cadastroScene = new Scene(cadastroView, 700, 400);
-			
-			Parent cadastradosListView = FXMLLoader.load(getClass().getResource("/gui/CadastradosListView.fxml"));
-			cadastradosListScene = new Scene(cadastradosListView, 700, 400);
-			
-			
+			cadastroScene = new Scene(cadastroView, 700, 400);			
 			
 			stage.setScene(mainScene);
 			stage.setTitle("Sistema Teste");
@@ -60,9 +53,6 @@ public class Main extends Application {
 			break;
 		case "CadastroView":
 			stage.setScene(cadastroScene);
-			break;
-		case "CadastradosListView":
-			stage.setScene(cadastradosListScene);
 			break;
 		}
 	}
