@@ -27,7 +27,7 @@ public class UserTabela implements Serializable {
         this.deposito = new SimpleIntegerProperty(deposito);
         this.celular = new SimpleStringProperty(celular);
     }
-
+    
     
 
 	public boolean isSelected() {

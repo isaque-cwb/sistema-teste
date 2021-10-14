@@ -1,22 +1,39 @@
 package gui;
 
-import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Consumer;
 
 import application.Main;
-import gui.util.Alerts;
+import db.DB;
+import db.DbException;
+import entities.UserTabela;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 public class MainViewController implements Initializable {
 
+	
+	
+	private CadastradosListViewController clvc;
+	
+	List<UserTabela> list = new ArrayList<>();
+	
 	@FXML
 	private MenuItem menuItemCadastro;
 
@@ -26,23 +43,47 @@ public class MainViewController implements Initializable {
 	@FXML
 	private MenuItem menuFim;
 	
+	@FXML 
+	private Button btnFechar;
+	
 	
 	
 	@FXML
-	public void onMenuItemCadastroAction() {
-		loadViewCadastro("/gui/CadastroView.fxml", null);
+	public void onMenuItemCadastroAction(ActionEvent event) {
+		Main.changeView("CadastroView");
 	}
 	
 	@FXML
 	public void onMenuItemCadastradosAction() {
-		loadViewCadastrados("/gui/CadastradosListView.fxml");
+		Main.changeView("CadastradosListView");
+		
+				
+	}
+	
+	
+	@FXML
+	private void fechar(){
+	    Stage stage = (Stage) btnFechar.getScene().getWindow();
+	    stage.close();
 	}
 	
 	@FXML
-	public void onMenuFimAction() {
-		System.out.println("onMenuFimAction");
+	public void onMenuFimAction(ActionEvent event) {
+		
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Fechando o programa");
+		alert.setHeaderText(null);
+		alert.setResizable(false);
+		alert.setContentText("Saindo... Até breve!");
+		Optional<ButtonType> result = alert.showAndWait();
+		ButtonType button = result.orElse(ButtonType.CANCEL);
+
+
+		if (button == ButtonType.OK) {
+			fechar();
+		}
+		
 	}
-	
 	
 	
 	@Override
@@ -50,51 +91,6 @@ public class MainViewController implements Initializable {
 				
 	}
 	
-	private synchronized <T> void loadViewCadastro(String absolutName, Consumer<T> initializingAction) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
-			//ScrollPane newScrollPane = loader.load();
-			//VBox newVBox = loader.load();
-			//SplitPane newSplitPane = loader.load();
-			AnchorPane newAnchorPane =  loader.load();
-			
-			Scene mainScene = Main.getMainScene();
-			AnchorPane anchorPane = (AnchorPane)(mainScene.getRoot());
-						
-			anchorPane.getChildren().clear();
-			anchorPane.getChildren().addAll(newAnchorPane.getChildren());
-			
-			T controller = loader.getController();
-			initializingAction.accept(controller);
-			
-		}
-		catch(IOException e){
-			Alerts.showAlert("IO Exception", null, e.getMessage(), AlertType.ERROR);
-			
-		}
-	}
-
 	
-	private void loadViewCadastrados(String absolutName) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
-			//ScrollPane newScrollPane = loader.load();
-			//VBox newVBox = loader.load();
-			//SplitPane newSplitPane = loader.load();
-			AnchorPane newAnchorPane =  loader.load();
-			
-			
-			Scene mainScene = Main.getMainScene();
-			AnchorPane anchorPane = (AnchorPane)(mainScene.getRoot());
-			
-			anchorPane.getChildren().clear();
-			anchorPane.getChildren().addAll(newAnchorPane.getChildren());	
-			
-		}
-		catch(IOException e){
-			Alerts.showAlert("IOException", "Erro loading View", e.getMessage(), AlertType.ERROR);
-			
-		}
-	}
-
+	
 }

@@ -24,15 +24,13 @@
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<TextField fx:id="txtId" GridPane.columnIndex="1" />
-				<TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-				<TextField fx:id="txtValor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-				<TextField fx:id="txtDeposito" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-				<TextField fx:id="txtCelular" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="ID">
+				<TextField fx:id="txtNome" promptText="Digite nome completo" GridPane.columnIndex="1" />
+				<TextField fx:id="txtValor" promptText="Digite um Valor" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<TextField fx:id="txtDeposito" promptText="Digite um Valor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<TextField fx:id="txtCelular" onKeyReleased="#fomartNumCel" promptText="(DDD) XXXXX-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Nome">
 					<font>
 						<Font size="16.0" />
 					</font>
@@ -43,7 +41,7 @@
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</GridPane.margin>
 				</Label>
-				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Nome" GridPane.rowIndex="1">
+				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Valor" GridPane.rowIndex="1">
 					<font>
 						<Font size="16.0" />
 					</font>
@@ -54,7 +52,7 @@
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</GridPane.margin>
 				</Label>
-				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Valor" GridPane.rowIndex="2">
+				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Depósito" GridPane.rowIndex="2">
 					<font>
 						<Font size="16.0" />
 					</font>
@@ -65,7 +63,7 @@
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</GridPane.margin>
 				</Label>
-				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Depósito" GridPane.rowIndex="3">
+				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Celular" GridPane.rowIndex="3">
 					<font>
 						<Font size="16.0" />
 					</font>
@@ -76,39 +74,28 @@
 						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
 					</GridPane.margin>
 				</Label>
-				<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" depthTest="ENABLE" prefHeight="62.0" prefWidth="112.0" text="Celular" GridPane.rowIndex="4">
-					<font>
-						<Font size="16.0" />
-					</font>
-					<opaqueInsets>
-						<Insets />
-					</opaqueInsets>
-					<GridPane.margin>
-						<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-					</GridPane.margin>
-				</Label>
-				<Button fx:id="buttonIncluir" mnemonicParsing="false" onAction="#onButtonIncluirAction" prefHeight="26.0" prefWidth="201.0" text="Incluir" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="buttonSair" mnemonicParsing="false" onAction="#onButtonSairAction" prefHeight="26.0" prefWidth="38.0" text="Sair" GridPane.rowIndex="5">
+				<Button fx:id="buttonIncluir" mnemonicParsing="false" onAction="#onButtonIncluirAction" prefHeight="26.0" prefWidth="201.0" text="Incluir" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="buttonSair" mnemonicParsing="false" onAction="#onButtonSairAction" prefHeight="26.0" prefWidth="38.0" text="Sair" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="labelErrorNome" textAlignment="JUSTIFY" textFill="#ec0707" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="labelErrorNome" textAlignment="JUSTIFY" textFill="#ec0707" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="labelErrorValor" textFill="#f20d0d" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label fx:id="labelErrorValor" textFill="#f20d0d" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="labelErrorDeposito" textFill="#f20a0a" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="labelErrorDeposito" textFill="#f20a0a" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="labelErrorCelular" textFill="#f70707" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label fx:id="labelErrorCelular" textFill="#f70707" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>

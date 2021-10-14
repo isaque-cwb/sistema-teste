@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 public class LoginViewController implements Initializable {
 
@@ -69,39 +68,40 @@ public class LoginViewController implements Initializable {
 	public void onButtonValidarAction() {
 		
 		String adm = "Admin";
-		Integer senha = 1234567;
+		Integer senha = 12345;
 				
 		entity = getFormData();
 		UserAdmin obj = entity;
 		
 		if(obj.getNome().equals(adm) && obj.getSenha().equals(senha)) {
 			
-			loadView("/gui/MainView.fxml");
+			Main.changeView("MainView");
+			//loadView("/gui/MainView.fxml");
 		}else {
 			Alerts.showAlert("ERRO", null, "Usário ou senha inválida", AlertType.ERROR);
 		}		
 	
 	}
 	
-	private void loadView(String absolutName) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
-			VBox newVBox =  loader.load(); //pra onde vai 
-			
-			Scene mainScene = Main.getMainScene();
-			AnchorPane anchorPane = (AnchorPane) mainScene.getRoot();// de onde estava
-			
-			
-			anchorPane.getChildren().clear();
-			
-			anchorPane.getChildren().addAll(newVBox.getChildren());	
-			
-		}
-		catch(IOException e){
-			Alerts.showAlert("IOException", "Erro loading View", e.getMessage(), AlertType.ERROR);
-			
-		}
-	}
+//	private void loadView(String absolutName) {
+//		try {
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
+//			AnchorPane newAnchorPane =  loader.load(); 
+//			
+//			Scene mainScene = Main.getMainScene();
+//			AnchorPane anchorPane = (AnchorPane) mainScene.getRoot();
+//			
+//			
+//			anchorPane.getChildren().clear();
+//			
+//			anchorPane.getChildren().addAll(newAnchorPane.getChildren());	
+//			
+//		}
+//		catch(IOException e){
+//			Alerts.showAlert("IOException", "Erro loading View", e.getMessage(), AlertType.ERROR);
+//			
+//		}
+//	}
 	
 
 	@Override
